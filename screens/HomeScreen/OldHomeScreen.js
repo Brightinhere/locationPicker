@@ -7,7 +7,7 @@ import MapView from "react-native-maps";
 import {StatusBar} from "expo-status-bar";
 
 
-const MainScreen = ({ navigation }) => {
+const OldHomeScreen = ({ navigation }) => {
 
     const backendUrl = "http://localhost:8081"
 
@@ -99,4 +99,4 @@ const styles = StyleSheet.create({
 
 
 
-export default MainScreen;
+export default OldHomeScreen;
