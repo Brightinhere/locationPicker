@@ -11,7 +11,7 @@ const OldHomeScreen = ({ navigation }) => {
 
     // const backendUrl = "http://localhost:8081"
 
-    const backendUrl = "https://locationpicker.herokuapp.com/"
+    const backendUrl = "https://locationpicker.herokuapp.com"
     const [location, setLocation] = useState(null);
     const [errorMsg, setErrorMsg] = useState(null);
     const yourName = faker.name.fullName();

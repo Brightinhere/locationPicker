@@ -6,7 +6,7 @@ import * as Location from "expo-location";
 export default function MedicScreen(props) {
     // const backendUrl = "http://localhost:8081"
 
-    const backendUrl = "https://locationpicker.herokuapp.com/"
+    const backendUrl = "https://locationpicker.herokuapp.com"
     const [location, setLocation] = useState(null);
     const [errorMsg, setErrorMsg] = useState(null);
 
