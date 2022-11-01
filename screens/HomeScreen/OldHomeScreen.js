@@ -11,6 +11,7 @@ const OldHomeScreen = ({ navigation }) => {
 
     const backendUrl = "http://localhost:8081"
 
+    // const backendUrl = "https://locationpicker.herokuapp.com/"
     const [location, setLocation] = useState(null);
     const [errorMsg, setErrorMsg] = useState(null);
     const yourName = faker.name.fullName();
@@ -43,43 +44,27 @@ const OldHomeScreen = ({ navigation }) => {
     return (
         <View style={styles.container}>
             <Text>Hallo {yourName}</Text>
-            <Button onPress={sendPing(location, yourName, backendUrl)} title={"Stuur locatie"}/>
+            <Button onPress={() => {
+                sendPing(location, yourName, backendUrl)
+            }} title={"Stuur locatie"}/>
             <Text>{friendName}</Text>
-            {location != null &&
-                <View style={styles.container}>
-                    <MapView style={styles.map}
-                             initialRegion={{
-                                 latitude: location.coords.latitude,
-                                 longitude: location.coords.longitude,
-                                 latitudeDelta: 0.0,
-                                 longitudeDelta: 0.0,
-                             }}
-                    >
-                        <MapView.Marker
-                            coordinate={{
-                                latitude: location.coords.latitude,
-                                longitude: location.coords.longitude
-                            }}
-                            title={"title"}
-                            description={"description"}
-                        />
-                    </MapView>
-                </View>
-            }
+
             <StatusBar style="auto" />
         </View>
     );
 };
 
 function sendPing(location, yourName, backendUrl) {
-    const lat_long = [location.coords.latitude, location.coords.longitude].join(" ");
-    console.log(`lat_long ${lat_long} name ${yourName}`)
-    axios.post(`${backendUrl}/ping`, { location: lat_long, user: yourName })
-        .then(res => {
-            console.log(res);
-            console.log(res.data);
-        })
-        .catch(err => console.log(err));
+    if (location.coords !=  null) {
+        const lat_long = [location.coords.latitude, location.coords.longitude].join(" ");
+        console.log(`lat_long ${lat_long} name ${yourName}`)
+        axios.post(`${backendUrl}/saveLocation`, { location: lat_long, user: yourName })
+            .then(res => {
+                console.log(res);
+                console.log(res.data);
+            })
+            .catch(err => console.log("Sendping " + err));
+    }
 }
 
 
