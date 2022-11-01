@@ -64,11 +64,11 @@ export default function MedicScreen(props) {
 
 
     return (
-        <View>
+        <View style={styles.container}>
             <Button onPress={updateLocation} title={"Get Last Loc"}/>
             <Text>Medic Screen</Text>
             {location != null && location.coords != null &&
-                <View style={styles.container}>
+                <View>
                     <MapView style={styles.map}
                              initialRegion={{
                                  latitude: location.coords.latitude,
