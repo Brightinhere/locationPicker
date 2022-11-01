@@ -6,9 +6,9 @@ import {LocationAccuracy} from "expo-location/src/Location.types";
 import axios from "axios";
 
 export default function MedicScreen(props) {
-    const backendUrl = "http://localhost:8081"
+    // const backendUrl = "http://localhost:8081"
 
-    // const backendUrl = "https://locationpicker.herokuapp.com"
+    const backendUrl = "https://locationpicker.herokuapp.com"
     const [location, setLocation] = useState(null);
     const [errorMsg, setErrorMsg] = useState(null);
 
